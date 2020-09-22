@@ -79,6 +79,16 @@ Add Logout Functionality to Welcome#Index:
 <%= link_to 'Sign Out', destroy_user_session_path, method: :delte %>
 ```
 
+### Setup Bootstrap
+
+Install Bootstrap, jquery, and popper.js via yarn:
+
+```shell
+yarn add bootstrap jquery popper.js
+```
+
+
+
 
 ## Running the tests
 
