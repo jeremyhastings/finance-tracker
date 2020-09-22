@@ -16,6 +16,16 @@ to keep the application up to date so if the latest commit doesn't work try goin
 
 ## FOR REFERENCE (Step by step building of application):
 
+### Setup Application for use with Heroku
+
+Update Gemfile to handle PostgreSQL in Heroku:
+
+```ruby
+group :production do
+  gem 'pg'
+end
+```
+
 ### Initial Controller and Root Route
 
 Generate a new controller called welcome with the action index:
