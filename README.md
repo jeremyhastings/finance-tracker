@@ -40,6 +40,14 @@ Update config > routes.rb with root path directing to welcome#index:
 root 'welcome#index'
 ```
 
+### Setup Authentication
+
+Add Devise Gem to Gemfile:
+
+```ruby
+gem 'devise'
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
