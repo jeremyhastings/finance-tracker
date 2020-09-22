@@ -87,6 +87,21 @@ Install Bootstrap, jquery, and popper.js via yarn:
 yarn add bootstrap jquery popper.js
 ```
 
+Update config > webpack > environment.js so Rails understands jquery and popper.js syntax:
+
+```javascript
+const { environment } = require('@rails/webpacker')
+
+const webpack = require("webpack")
+
+environment.plugins.append("Provide", new webpack.ProvidePlugin({
+$: 'jquery',
+jQuery: 'jquery',
+Popper: ['popper.js', 'default']
+}))
+
+module.exports = environment
+```
 
 
 
