@@ -115,6 +115,17 @@ Update app > assets > stylesheets > application.css to use Bootstrap:
 *= require bootstrap
 ```
 
+Update views with devise-bootstrap-views gem in Gemfile:
+
+```ruby
+# Add devise-bootstrap-views Gem
+gem 'devise-bootstrap-views', '~> 1.0'
+```
+```shell
+rails generate devise:views:bootstrap_templates
+```
+
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
