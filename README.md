@@ -60,6 +60,22 @@ Create User Model with Devise:
 rails generate devise User
 ```
 
+Force all Users of the Application to Authenticate (add to ApplicationController):
+
+```ruby
+before_action :authenticate_user!
+```
+
+Handle Flash Messages in app > views > layouts > application.html.erb:
+
+```html
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+```
+
+
+
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
