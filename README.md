@@ -103,6 +103,11 @@ Popper: ['popper.js', 'default']
 module.exports = environment
 ```
 
+Import bootstrap into app > javascript > packs > application.js:
+
+```javascript
+import "bootstrap"
+```
 
 
 ## Running the tests
