@@ -109,6 +109,11 @@ Import bootstrap into app > javascript > packs > application.js:
 import "bootstrap"
 ```
 
+Update app > assets > stylesheets > application.css to use Bootstrap:
+
+```css
+*= require bootstrap
+```
 
 ## Running the tests
 
