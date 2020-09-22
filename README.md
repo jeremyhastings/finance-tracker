@@ -16,6 +16,16 @@ to keep the application up to date so if the latest commit doesn't work try goin
 
 ## FOR REFERENCE (Step by step building of application):
 
+### Setup Application for use with Heroku
+
+Update Gemfile to handle PostgreSQL in Heroku:
+
+```ruby
+group :production do
+  gem 'pg'
+end
+```
+
 ### Initial Controller and Root Route
 
 Generate a new controller called welcome with the action index:
@@ -29,6 +39,46 @@ Update config > routes.rb with root path directing to welcome#index:
 ```ruby
 root 'welcome#index'
 ```
+
+### Setup Authentication
+
+Add Devise Gem to Gemfile:
+
+```ruby
+gem 'devise'
+```
+
+Install Devise in Rails:
+
+```shell
+rails generate devise:install
+```
+
+Create User Model with Devise:
+
+```shell
+rails generate devise User
+```
+
+Force all Users of the Application to Authenticate (add to ApplicationController):
+
+```ruby
+before_action :authenticate_user!
+```
+
+Handle Flash Messages in app > views > layouts > application.html.erb:
+
+```html
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+```
+
+Add Logout Functionality to Welcome#Index:
+
+```shell
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delte %>
+```
+
 
 ## Running the tests
 
