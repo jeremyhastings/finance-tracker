@@ -54,6 +54,12 @@ Install Devise in Rails:
 rails generate devise:install
 ```
 
+Create User Model with Devise:
+
+```shell
+rails generate devise User
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
