@@ -79,6 +79,41 @@ Add Logout Functionality to Welcome#Index:
 <%= link_to 'Sign Out', destroy_user_session_path, method: :delte %>
 ```
 
+### Setup Bootstrap
+
+Install Bootstrap, jquery, and popper.js via yarn:
+
+```shell
+yarn add bootstrap jquery popper.js
+```
+
+Update config > webpack > environment.js so Rails understands jquery and popper.js syntax:
+
+```javascript
+const { environment } = require('@rails/webpacker')
+
+const webpack = require("webpack")
+
+environment.plugins.append("Provide", new webpack.ProvidePlugin({
+$: 'jquery',
+jQuery: 'jquery',
+Popper: ['popper.js', 'default']
+}))
+
+module.exports = environment
+```
+
+Import bootstrap into app > javascript > packs > application.js:
+
+```javascript
+import "bootstrap"
+```
+
+Update app > assets > stylesheets > application.css to use Bootstrap:
+
+```css
+*= require bootstrap
+```
 
 ## Running the tests
 
