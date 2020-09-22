@@ -48,6 +48,12 @@ Add Devise Gem to Gemfile:
 gem 'devise'
 ```
 
+Install Devise in Rails:
+
+```shell
+rails generate devise:install
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
