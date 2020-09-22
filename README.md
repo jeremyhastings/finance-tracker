@@ -73,7 +73,11 @@ Handle Flash Messages in app > views > layouts > application.html.erb:
 <p class="alert"><%= alert %></p>
 ```
 
+Add Logout Functionality to Welcome#Index:
 
+```shell
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delte %>
+```
 
 
 ## Running the tests
