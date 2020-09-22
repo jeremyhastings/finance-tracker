@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Add Devise Gem for Authentication System
 gem 'devise'
+# Add devise-bootstrap-views Gem
+gem 'devise-bootstrap-views', '~> 1.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
