@@ -62,6 +62,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Added per Devise Installation instructions
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # TODO: In production, :host should be set to the actual host of your application.
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
