@@ -14,106 +14,20 @@ machine for development and testing purposes. See deployment for notes on how to
 RubyMine 2020.2, Ruby 2.7.1, and Rails 6.0.3.3 were used to initially make this project on a machine with SQLite.  I try
 to keep the application up to date so if the latest commit doesn't work try going back to an earlier one.
 
-## FOR REFERENCE:
+## FOR REFERENCE (Step by step building of application):
 
-### Friendly URL
+### Initial Controller and Root Route
 
-Generate a new migration that adds a slug column to the events table:
-
-```shell
-rails generate migration AddSlugToEvents slug
-```
-
-Apply migratation:
+Generate a new controller called welcome with the action index:
 
 ```shell
-rails db:migrate
+rails g controller welcome index
 ```
 
-Add validation to make sure event title is unique so the url can be based on a unique source:
+Update config > routes.rb with root path directing to welcome#index:
 
 ```ruby
-validates :title, presence: true, uniqueness: true
-```
-
-Define a private method in the Event model:
-
-```ruby
-def set_slug
-    self.slug = title.parameterize
-end
-```
-
-Use the before_save method to call set_slug prior to every save in the Event Model:
-
-```ruby
-before_save :set_slug
-```
-
-Define a to_param method in the Event Model:
-
-```ruby
-def to_param
-    slug
-end
-```
-
-Update EventsController, RegistrationsController, and LikesController Actions to find events by their slug:
-
-```ruby
-def set_event
-    @event = Event.find_by!(slug: params[:id])
-```
-
-### Scopes and Routes
-
-Create scopes in the Events Model:
-
-```shell
-scope :free, -> { upcoming.where(price: 0.0).order(:name) }
-scope :past, -> { where("starts_at < ?", Time.now).order("starts_at") }
-scope :recent, ->(max=3) { past.limit(max) }
-scope :upcoming, -> { where("starts_at > ?", Time.now).order("starts_at") }
-```
-
-Create filter route for new scopes in routes.rb:
-
-```shell
-get "events/filter/:filter" => "events#index", as: :filtered_events
-```
-
-Update Index Action in EventsController to handle :filter params:
-
-```shell
-def index
-  case params[:filter]
-  when "past"
-    @events = Event.past
-  when "free"
-    @events = Event.free
-  when "recent"
-    @events = Event.recent
-  else
-    @events = Event.upcoming
-  end
-end
-```
-
-Add Links:
-
-```shell
-<li>
-  <%= link_to "Upcoming Events", events_path %>
-</li>
-<li>
-  <%= link_to "Past", filtered_events_path(:past) %>
-</li>
-<li>
-  <%= link_to "Free", filtered_events_path(:free) %>
-</li>
-<li>
-  <%= link_to "Recent", filtered_events_path(:recent) %>
-</li>
+root 'welcome#index'
 ```
 
 ## Running the tests
