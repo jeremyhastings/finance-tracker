@@ -76,7 +76,7 @@ Handle Flash Messages in app > views > layouts > application.html.erb:
 Add Logout Functionality to Welcome#Index:
 
 ```shell
-<%= link_to 'Sign Out', destroy_user_session_path, method: :delte %>
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 ```
 
 ### Setup Bootstrap
@@ -121,8 +121,18 @@ Update views with devise-bootstrap-views gem in Gemfile:
 # Add devise-bootstrap-views Gem
 gem 'devise-bootstrap-views', '~> 1.0'
 ```
+
 ```shell
 rails generate devise:views:bootstrap_templates
+```
+
+### Add IEX Cloud Stock API
+
+Add gem to gemfile:
+
+```ruby
+# Add IEX Cloud Ruby Client Gem for Stock Data API
+gem 'iex-ruby-client'
 ```
 
 
