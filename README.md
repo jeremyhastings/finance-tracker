@@ -135,6 +135,13 @@ Add gem to gemfile:
 gem 'iex-ruby-client'
 ```
 
+Create Stock Model:
+
+```shell
+rails g model ticker name last_price:decimal
+```
+
+
 
 ## Running the tests
 
