@@ -167,6 +167,16 @@ EDITOR="code --wait" rails credentials:edit
 iex_client:
   sandbox_api_key: "ENTER PUBLISHABLE KEY HERE"
 ```
+
+### Setup Front-End for Stock Porfolios
+
+Add 'my_portfolio' route to routes.rb:
+
+```ruby
+get 'my_portfolio', to: 'users#my_portfolio'
+```
+
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
