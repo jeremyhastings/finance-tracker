@@ -76,7 +76,7 @@ Handle Flash Messages in app > views > layouts > application.html.erb:
 Add Logout Functionality to Welcome#Index:
 
 ```shell
-<%= link_to 'Sign Out', destroy_user_session_path, method: :delte %>
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 ```
 
 ### Setup Bootstrap
@@ -121,11 +121,52 @@ Update views with devise-bootstrap-views gem in Gemfile:
 # Add devise-bootstrap-views Gem
 gem 'devise-bootstrap-views', '~> 1.0'
 ```
+
 ```shell
 rails generate devise:views:bootstrap_templates
 ```
 
+### Add IEX Cloud Stock API
 
+Add gem to gemfile:
+
+```ruby
+# Add IEX Cloud Ruby Client Gem for Stock Data API
+gem 'iex-ruby-client'
+```
+
+Create Stock Model:
+
+```shell
+rails g model ticker name last_price:decimal
+```
+
+```shell
+rails db:migrate
+```
+
+Create new_lookup method in Stock Model:
+
+```ruby
+def self.new_lookup(ticker_symbol)
+  client = IEX::Api::Client.new(
+    publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
+    endpoint: 'https://sandbox.iexapis.com/v1'
+  )
+  client.price(ticker_symbol)
+end
+```
+
+Secure Credentials in credentials.yml.enc (Using VS Code):
+
+```shell
+EDITOR="code --wait" rails credentials:edit
+```
+
+```text
+iex_client:
+  sandbox_api_key: "ENTER PUBLISHABLE KEY HERE"
+```
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
@@ -140,6 +181,11 @@ Should easily deploy to Heroku.  Instructions for that at a later date if needed
 * [Ruby on Rails](https://rubyonrails.org) - MVC Framework
 * [RubyMine](https://www.jetbrains.com/ruby/) - IDE
 * [PostgreSQL](https://www.postgresql.org) - Database
+* [Bootstrap](https://getbootstrap.com) - UI Framework
+* [Devise](https://github.com/heartcombo/devise) - Authentication
+* [Devise Bootstrap Views](https://github.com/hisea/devise-bootstrap-views) - UI Templates for Devise
+* [IEX Cloud](https://iexcloud.io/) - Stock Ticker API
+* [IEX Cloud Ruby Gem](https://github.com/dblock/iex-ruby-client) - IEX Cloud API Wrapper
 
 ## Contributing
 
