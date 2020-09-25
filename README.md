@@ -141,7 +141,9 @@ Create Stock Model:
 rails g model ticker name last_price:decimal
 ```
 
-
+```shell
+rails db:migrate
+```
 
 ## Running the tests
 
@@ -157,6 +159,11 @@ Should easily deploy to Heroku.  Instructions for that at a later date if needed
 * [Ruby on Rails](https://rubyonrails.org) - MVC Framework
 * [RubyMine](https://www.jetbrains.com/ruby/) - IDE
 * [PostgreSQL](https://www.postgresql.org) - Database
+* [Bootstrap](https://getbootstrap.com) - UI Framework
+* [Devise](https://github.com/heartcombo/devise) - Authentication
+* [Devise Bootstrap Views](https://github.com/hisea/devise-bootstrap-views) - UI Templates for Devise
+* [IEX Cloud](https://iexcloud.io/) - Stock Ticker API
+* [IEX Cloud Ruby Gem](https://github.com/dblock/iex-ruby-client) - IEX Cloud API Wrapper
 
 ## Contributing
 
