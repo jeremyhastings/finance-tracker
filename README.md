@@ -176,6 +176,11 @@ Add 'my_portfolio' route to routes.rb:
 get 'my_portfolio', to: 'users#my_portfolio'
 ```
 
+Create Controller and Views for my_portfolio:
+
+```shell
+rails g controller Users my_portfolio
+```
 
 ## Running the tests
 
