@@ -157,7 +157,7 @@ def self.new_lookup(ticker_symbol)
 end
 ```
 
-Secure Credentials in credentials.yml.enc:
+Secure Credentials in credentials.yml.enc (Using VS Code):
 
 ```shell
 EDITOR="code --wait" rails credentials:edit
