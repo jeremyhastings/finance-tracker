@@ -145,6 +145,18 @@ rails g model ticker name last_price:decimal
 rails db:migrate
 ```
 
+Create new_lookup method in Stock Model:
+
+```ruby
+def self.new_lookup(ticker_symbol)
+  client = IEX::Api::Client.new(
+    publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
+    endpoint: 'https://cloud.iexapis.com/v1'
+  )
+  client.price(ticker_symbol)
+end
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
