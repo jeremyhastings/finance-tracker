@@ -182,6 +182,13 @@ Create Controller and Views for my_portfolio:
 rails g controller Users my_portfolio
 ```
 
+Add Font Awesome Gem:
+
+```ruby
+# Add Font Awesome to Application
+gem 'font-awesome-sass', '~> 5.13.0'
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
