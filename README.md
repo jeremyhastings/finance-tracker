@@ -151,12 +151,22 @@ Create new_lookup method in Stock Model:
 def self.new_lookup(ticker_symbol)
   client = IEX::Api::Client.new(
     publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
-    endpoint: 'https://cloud.iexapis.com/v1'
+    endpoint: 'https://sandbox.iexapis.com/v1'
   )
   client.price(ticker_symbol)
 end
 ```
 
+Secure Credentials in credentials.yml.enc:
+
+```shell
+EDITOR="code --wait" rails credentials:edit
+```
+
+```text
+iex_client:
+  sandbox_api_key: "ENTER PUBLISHABLE KEY HERE"
+```
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
