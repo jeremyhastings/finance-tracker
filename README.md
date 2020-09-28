@@ -189,6 +189,12 @@ Add Font Awesome Gem:
 gem 'font-awesome-sass', '~> 5.13.0'
 ```
 
+Add search_stock to routes:
+
+```ruby
+get 'search_stock', to: 'stocks#search'
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
