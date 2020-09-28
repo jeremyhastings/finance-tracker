@@ -195,6 +195,16 @@ Add search_stock to routes:
 get 'search_stock', to: 'stocks#search'
 ```
 
+Create stocks_controller.rb with search method:
+
+```ruby
+class StocksController < ApplicationController
+  def search
+    stock = Stock.new_lookup(params[:stock])
+  end
+end
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
