@@ -153,7 +153,8 @@ def self.new_lookup(ticker_symbol)
     publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
     endpoint: 'https://sandbox.iexapis.com/v1'
   )
-  client.price(ticker_symbol)
+  # client.price(ticker_symbol)
+  new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
 end
 ```
 
@@ -167,6 +168,45 @@ EDITOR="code --wait" rails credentials:edit
 iex_client:
   sandbox_api_key: "ENTER PUBLISHABLE KEY HERE"
 ```
+
+### Setup Front-End for Stock Porfolios
+
+Add 'my_portfolio' route to routes.rb:
+
+```ruby
+get 'my_portfolio', to: 'users#my_portfolio'
+```
+
+Create Controller and Views for my_portfolio:
+
+```shell
+rails g controller Users my_portfolio
+```
+
+Add Font Awesome Gem:
+
+```ruby
+# Add Font Awesome to Application
+gem 'font-awesome-sass', '~> 5.13.0'
+```
+
+Add search_stock to routes:
+
+```ruby
+get 'search_stock', to: 'stocks#search'
+```
+
+Create stocks_controller.rb with search method:
+
+```ruby
+class StocksController < ApplicationController
+  def search
+    @stock = Stock.new_lookup(params[:stock])
+    render 'users/my_portfolio'
+  end
+end
+```
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
