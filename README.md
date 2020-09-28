@@ -218,7 +218,11 @@ end
 
 ### Add JavaScript to handle AJAX request (remote: true):
 
+Create _result.js.erb and add JavaScript:
 
+```javascript
+document.querySelector('#results').innerHTML = '<%= j render 'users/result.html' %>'
+```
 
 
 ## Running the tests
