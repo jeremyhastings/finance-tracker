@@ -173,7 +173,7 @@ iex_client:
   sandbox_api_key: "ENTER PUBLISHABLE KEY HERE"
 ```
 
-### Setup Front-End for Stock Porfolios
+### Setup Front-End for Stock Portfolios
 
 Add 'my_portfolio' route to routes.rb:
 
@@ -215,6 +215,11 @@ class StocksController < ApplicationController
   end
 end
 ```
+
+### Add AJAX and JavaScript to prevent page from reloading:
+
+
+
 
 ## Running the tests
 
