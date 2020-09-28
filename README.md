@@ -216,7 +216,7 @@ class StocksController < ApplicationController
 end
 ```
 
-### Add AJAX and JavaScript to prevent page from reloading:
+### Add JavaScript to handle AJAX request (remote: true):
 
 
 
