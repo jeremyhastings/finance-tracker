@@ -153,7 +153,8 @@ def self.new_lookup(ticker_symbol)
     publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
     endpoint: 'https://sandbox.iexapis.com/v1'
   )
-  client.price(ticker_symbol)
+  # client.price(ticker_symbol)
+  new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
 end
 ```
 
