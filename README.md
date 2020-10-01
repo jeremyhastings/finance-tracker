@@ -235,11 +235,18 @@ Create _result.js.erb and add JavaScript:
 document.querySelector('#results').innerHTML = '<%= j render 'users/result.html' %>'
 ```
 
-### Add Message partial to result partial to handle invalid searches:
+Add Message partial to result partial to handle invalid searches:
 
 ```erbruby
   <%= render 'shared/messages' %>
 ```
+
+### Create UserStock Model as a Resource:
+
+```shell
+rails g resource UserStock user:references stock:references
+```
+
 
 ## Running the tests
 
