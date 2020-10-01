@@ -154,7 +154,11 @@ def self.new_lookup(ticker_symbol)
     endpoint: 'https://sandbox.iexapis.com/v1'
   )
   # client.price(ticker_symbol)
-  new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
+    begin
+      new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
+    rescue => exception
+      return nil
+    end
 end
 ```
 
@@ -169,7 +173,7 @@ iex_client:
   sandbox_api_key: "ENTER PUBLISHABLE KEY HERE"
 ```
 
-### Setup Front-End for Stock Porfolios
+### Setup Front-End for Stock Portfolios
 
 Add 'my_portfolio' route to routes.rb:
 
@@ -201,10 +205,40 @@ Create stocks_controller.rb with search method:
 ```ruby
 class StocksController < ApplicationController
   def search
-    @stock = Stock.new_lookup(params[:stock])
-    render 'users/my_portfolio'
+    if params[:stock].present?
+      @stock = Stock.new_lookup(params[:stock])
+      if @stock
+        respond_to do | format |
+          format.js { render partial: 'users/result' }
+        end
+      else
+        respond_to do | format |
+          flash.now[:alert] = "Please enter a valid symbol to search"
+          format.js { render partial: 'users/result'}
+        end
+      end
+    else
+      respond_to do | format |
+        flash.now[:alert] = "Please enter a symbol to search"
+        format.js { render partial: 'users/result'}
+      end
+    end
   end
 end
+```
+
+### Add JavaScript to handle AJAX request (remote: true):
+
+Create _result.js.erb and add JavaScript:
+
+```javascript
+document.querySelector('#results').innerHTML = '<%= j render 'users/result.html' %>'
+```
+
+### Add Message partial to result partial to handle invalid searches:
+
+```erbruby
+  <%= render 'shared/messages' %>
 ```
 
 ## Running the tests
