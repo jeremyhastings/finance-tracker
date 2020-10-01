@@ -235,6 +235,11 @@ Create _result.js.erb and add JavaScript:
 document.querySelector('#results').innerHTML = '<%= j render 'users/result.html' %>'
 ```
 
+### Add Message partial to result partial to handle invalid searches:
+
+```erbruby
+  <%= render 'shared/messages' %>
+```
 
 ## Running the tests
 
