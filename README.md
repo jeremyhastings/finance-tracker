@@ -243,10 +243,33 @@ Add Message partial to result partial to handle invalid searches:
 
 ### Create UserStock Model as a Resource:
 
+Execute in the Terminal:
+
 ```shell
 rails g resource UserStock user:references stock:references
 ```
 
+Add has_many association and validation to Stock Model:
+
+```ruby
+has_many :user_stocks
+has_many :users, through: :user_stocks
+
+validates :name, :ticker_symbol, presence: true
+```
+
+Add has_many association to User Model:
+
+```ruby
+has_many :user_stocks
+has_many :stocks, through: :user_stocks
+```
+
+Migrate the database:
+
+```shell
+rails db:migrate
+```
 
 ## Running the tests
 
