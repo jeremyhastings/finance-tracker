@@ -235,11 +235,48 @@ Create _result.js.erb and add JavaScript:
 document.querySelector('#results').innerHTML = '<%= j render 'users/result.html' %>'
 ```
 
-### Add Message partial to result partial to handle invalid searches:
+Add Message partial to result partial to handle invalid searches:
 
 ```erbruby
   <%= render 'shared/messages' %>
 ```
+
+### Create UserStock Model as a Resource:
+
+Execute in the Terminal:
+
+```shell
+rails g resource UserStock user:references stock:references
+```
+
+Add has_many association and validation to Stock Model:
+
+```ruby
+has_many :user_stocks
+has_many :users, through: :user_stocks
+
+validates :name, :ticker, presence: true
+```
+
+Add has_many association to User Model:
+
+```ruby
+has_many :user_stocks
+has_many :stocks, through: :user_stocks
+```
+
+Migrate the database:
+
+```shell
+rails db:migrate
+```
+
+Add tracked stocks variable to user_controller:
+
+```ruby
+@tracked_stocks = current_user.stocks
+```
+
 
 ## Running the tests
 

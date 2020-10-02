@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.logout-button {
+  margin-right: 5px;
+}
 .no-left-padding {
   padding-left: 0 !important;
 }
@@ -10,6 +13,7 @@
 }
 .results-block {
   display: inline-block;
+  margin-bottom: 1rem;
 }
 .search-area {
   padding-top: 50px;
