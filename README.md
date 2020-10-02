@@ -271,6 +271,13 @@ Migrate the database:
 rails db:migrate
 ```
 
+Add tracked stocks variable to user_controller:
+
+```ruby
+@tracked_stocks = current_user.stocks
+```
+
+
 ## Running the tests
 
 Tests to come at a later date.  Want to write some?
