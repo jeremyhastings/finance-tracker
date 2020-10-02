@@ -255,7 +255,7 @@ Add has_many association and validation to Stock Model:
 has_many :user_stocks
 has_many :users, through: :user_stocks
 
-validates :name, :ticker_symbol, presence: true
+validates :name, :ticker, presence: true
 ```
 
 Add has_many association to User Model:
