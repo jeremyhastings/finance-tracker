@@ -30,7 +30,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 # Add IEX Cloud Ruby Client Gem for Stock Data API
 gem 'iex-ruby-client'
 # Add Font Awesome to Application
-gem 'font-awesome-sass', '~> 5.13.0'
+gem 'font-awesome-sass', '~> 5.15.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
